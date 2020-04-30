@@ -1,4 +1,6 @@
-# d3_final
+# D3 (JavaScript library) - [Visualizing data with HTML, SVG, and CSS]
+
+#### Files/Folder Tree view.
 ```
 $ tree d3_final
 d3_final
@@ -27,3 +29,16 @@ d3_final
 
 5 directories, 17 files
 ```
+
+#### Data
+![Data](images/data.png)
+
+#### Scatter Plot
+![Scatter Plot](images/scatterplot.png)
+
+
+#### Bar Chart
+![Bar Chart](images/barchart.png)
+
+#### Line Chart
+![Line Chart](images/linechart.png)
