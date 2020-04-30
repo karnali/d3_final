@@ -1,0 +1,55 @@
+body {
+	margin: 0;
+	/*font-family: arial, sans;*/
+	font: 8pt Helvetica;
+}
+
+.label {
+	font-size: 14px;
+	stroke: red;
+}
+
+.legend text,
+.axis text {
+	font-size: 13px;
+	fill: black;
+}
+
+.axis path,
+.axis line {
+	fill: none;
+	stroke-width: 1px;
+	stroke: black;
+}
+
+.circle {
+	fill-opacity: 0.65;
+}
+
+.bubble {
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
+.bubble:hover text {
+	opacity: 1;
+}
+
+.bubble:hover circle {
+	fill-opacity: 1;
+}
+
+.legend rect {
+	fill-opacity: 0.75;
+}
+
+.legend:hover rect {
+	fill-opacity: 1;
+}
+
+.tooltip {
+	position: absolute;
+	width: 200px;
+	height: 28px;
+	pointer-events: none;
+}
