@@ -1,4 +1,7 @@
-// Load data, then make the visualization.
+/* Source: http://bl.ocks.org/williaster/10ef968ccfdc71c30ef8
+This code takes input data and produce bar chart with dropdown menu for each cereal. */
+
+// Load data from .csv file.
 var fileName = "data/a1-cereals.csv";
 var nutritionFields = [
 	"Calories",
@@ -18,8 +21,6 @@ d3.csv(fileName, function (error, data) {
 	data.forEach(function (d) {
 		var Cereal = d.Cereal;
 		cerealMap[Cereal] = [];
-
-		// { cerealName: [ bar1Val, bar2Val, ... ] }
 		nutritionFields.forEach(function (field) {
 			cerealMap[Cereal].push(+d[field]);
 		});
@@ -139,7 +140,7 @@ var makeVis = function (cerealMap) {
 			return d;
 		})
 		.text(function (d) {
-			return d[0].toUpperCase() + d.slice(1, d.length); // capitalize 1st letter
+			return d[0].toUpperCase() + d.slice(1, d.length); // Capitalize 1st letter
 		});
 
 	var initialData = cerealMap[cereals[0]];

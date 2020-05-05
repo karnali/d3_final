@@ -1,3 +1,8 @@
+/* Source: https://bl.ocks.org/Jverma/076377dd0125b1a508621441752735fc
+Cereal Nutrition Comparison Tool - This scatterplot will let you choose nutrition variable and compare with
+another nutrition variable.
+*/
+
 var margin = { top: 30, right: 20, bottom: 30, left: 40 },
 	width = 960 - margin.left - margin.right,
 	height = 500 - margin.top - margin.bottom;
