@@ -41,6 +41,8 @@ d3_final/
 #### Scatter Plot
 ![Scatter Plot](images/scatterplot.png)
 
+#### Scatter Plot
+![Sorted Bar](images/sorted_bar.png)
 
 #### Bar Chart
 ![Bar Chart](images/barchart.png)
