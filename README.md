@@ -2,11 +2,12 @@
 
 #### Files/Folder Tree view.
 ```
-$ tree d3_final
-d3_final
+$ tree d3_final/
+d3_final/
 ├── cereals.html*
-├── cereals_bar.html
+├── cereals_bar.html*
 ├── css/
+│   ├── barsort.css*
 │   ├── scatterplot.css*
 │   └── style.css*
 ├── csv_html.html*
@@ -16,18 +17,22 @@ d3_final
 │   ├── barchart.png*
 │   ├── data.png*
 │   ├── linechart.png*
-│   └── scatterplot.png*
+│   ├── scatterplot.png*
+│   └── sorted_bar.png*
 ├── index.html*
 ├── js/
 │   ├── d3.js*
 │   ├── d3.min.js*
 │   └── dimple.v2.1.2.min.js*
 ├── scatterplot.html*
-└── script/
-    ├── barplot.js
-    └── scatterplot.js*
+├── script/
+│   ├── barplot.js*
+│   ├── csv_html.js*
+│   ├── scatterplot.js*
+│   └── sortedbar.js*
+└── sorted_bar.html*
 
-5 directories, 17 files
+5 directories, 22 files
 ```
 
 #### Data
