@@ -6,11 +6,13 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+    
 <!-- Site navigation menu -->
 <ul class="navbar">
     <li><a href="index.html">Home</a>
     <li><a href="csv_html.html">Data</a>
     <li><a href="scatterplot.html">Scatter Plot</a>
+    <li><a href="sorted_bar.html">Sorted Bar</a>
     <li><a href="cereals_bar.html">Bar Chart</a>
     <li><a href="cereals.html">Line Chart</a>
 </ul>
@@ -23,7 +25,7 @@
 
 
     <script type="text/javascript">
-        var svg = dimple.newSvg("#chartContainer", 990, 400);
+        var svg = dimple.newSvg("#chartContainer", 990, 600);
         d3.csv("data/a1-cereals.csv", function (data) {
 
             var myChart = new dimple.chart(svg, data);
