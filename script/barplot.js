@@ -15,6 +15,7 @@ var nutritionFields = [
 	"Vitamins",
 ];
 
+//Read data from CSV, enter into Array
 d3.csv(fileName, function (error, data) {
 	var cerealMap = {};
 	dataType: "json";
@@ -28,6 +29,7 @@ d3.csv(fileName, function (error, data) {
 	makeVis(cerealMap);
 });
 
+//Create SVG canvas and populate
 var makeVis = function (cerealMap) {
 	// Define dimensions of vis
 	var margin = { top: 30, right: 50, bottom: 30, left: 50 },
@@ -64,17 +66,21 @@ var makeVis = function (cerealMap) {
 	// Make y-axis and add to canvas
 	var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
+	// Adds y-axis
 	var yAxisHandleForUpdate = canvas
 		.append("g")
 		.attr("class", "y axis")
 		.call(yAxis);
 
+	//Appends vertical "Value" label to axis
 	yAxisHandleForUpdate
 		.append("text")
 		.attr("transform", "rotate(-90)")
-		.attr("y", 6)
+		.attr("y", -40)
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
+		.style("font-weight", "lighter")
+		.style("stroke", "green")
 		.text("Value");
 
 	var updateBars = function (data) {
@@ -97,23 +103,57 @@ var makeVis = function (cerealMap) {
 				return yScale(d);
 			})
 			.attr("height", function (d, i) {
+				//window.alert("main bar creation commands");
+				var hTemp = height - yScale(d);
 				return height - yScale(d);
 			});
+
+		//Create Bar Labels
+		bars
+			.enter()
+			.append("text")
+			.attr("class", "label")
+			.style("stroke", "white")
+			.style("opacity", 1)
+			.style("visibility", "visible")
+			.style("text-anchor", "middle")
+			.attr("x", (function(d, i) { return xScale(nutritionFields[i]); }  ))
+			.attr("y", function(d) { return yScale(d); })
+			.attr("dx", "2.9em")
+			.attr("dy", "1em")
+			.text(function(d) {
+				//window.alert("Text Label " + d);
+				return d; });
+
+
 
 		// Update old ones, already have x / width from before
 		bars
 			.transition()
 			.duration(250)
 			.attr("y", function (d, i) {
+				//window.alert("bar-trans-update");
 				return yScale(d);
 			})
 			.attr("height", function (d, i) {
 				return height - yScale(d);
 			});
 
-		// Remove old ones
+		/*bars
+			.transition()
+			.duration(250)
+			.attr("y", function(d) { return yScale(d); })
+			.text(function(d) {
+				//window.alert("Text Label " + d);
+				return d; });*/
+
+		// Remove old bars
 		bars.exit().remove();
+
+
+
 	};
+
 
 	// Handler for dropdown value change
 	var dropdownChange = function () {
@@ -126,6 +166,7 @@ var makeVis = function (cerealMap) {
 	// Get names of cereals, for dropdown
 	var cereals = Object.keys(cerealMap).sort();
 
+	//Create and initialize event listener for dropdown change
 	var dropdown = d3
 		.select("#vis-container")
 		.insert("select", "svg")
@@ -143,6 +184,8 @@ var makeVis = function (cerealMap) {
 			return d[0].toUpperCase() + d.slice(1, d.length); // Capitalize 1st letter
 		});
 
+	//Determines initial data presented on load of the chart
 	var initialData = cerealMap[cereals[0]];
+
 	updateBars(initialData);
 };
