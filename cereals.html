@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    
+<!-- Site navigation menu -->
+<ul class="navbar">
+    <li><a href="index.html">Home</a>
+    <li><a href="csv_html.html">Data</a>
+    <li><a href="scatterplot.html">Scatter Plot</a>
+    <li><a href="sorted_bar.html">Sorted Bar</a>
+    <li><a href="cereals_bar.html">Bar Chart</a>
+    <li><a href="cereals.html">Line Chart</a>
+</ul>
+
+</br>
+
+<div id="chartContainer">
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="/nkbista/d3_final/js/dimple.v2.1.2.min.js"></script>
+
+
+    <script type="text/javascript">
+        var svg = dimple.newSvg("#chartContainer", 990, 600);
+        d3.csv("data/a1-cereals.csv", function (data) {
+
+            var myChart = new dimple.chart(svg, data);
+            myChart.setBounds(60, 30, 905, 305);
+            var x = myChart.addCategoryAxis("x", "Cereal");
+
+            //x.addOrderRule("Date");
+            myChart.addMeasureAxis("y", "Calories");
+            var s = myChart.addSeries("Manufacturer", dimple.plot.line);
+            s.interpolation = "cardinal";
+            myChart.addLegend(60, 10, 900, 20, "right");
+            myChart.draw();
+        });
+    </script>
+</div>
+
+</body>
+</html>

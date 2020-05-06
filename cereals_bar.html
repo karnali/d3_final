@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="utf-8">
+        <title>d3 Updating Bar Chart With Dropdown</title>
+        <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <style>
+            body {
+                font: 10px sans-serif;
+            }
+            select {
+                display: block;
+            }
+            .bar {
+                fill: red;
+                opacity: 0.5;
+            }
+            .bar:hover{
+                fill: green;
+            }
+            .axis path,
+            .axis line {
+                fill: none;
+                stroke: #000;
+                shape-rendering: crispEdges;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+<body>
+
+</br>
+<!-- Site navigation menu -->
+<ul class="navbar">
+    <li><a href="index.html">Home</a>
+    <li><a href="csv_html.html">Data</a>
+    <li><a href="scatterplot.html">Scatter Plot</a>
+    <li><a href="sorted_bar.html">Sorted Bar</a>
+    <li><a href="cereals_bar.html">Bar Chart</a>
+    <li><a href="cereals.html">Line Chart</a>
+</ul>
+
+
+<div id='vis-container'></div>
+<script src="script/barplot.js"></script>
+
+</body>
+</html>

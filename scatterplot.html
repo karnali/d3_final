@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Project</title>
+    <script src="//d3js.org/d3.v4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/scatterplot.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+<!-- Site navigation menu -->
+<ul class="navbar">
+    <li><a href="index.html">Home</a>
+    <li><a href="csv_html.html">Data</a>
+    <li><a href="scatterplot.html">Scatter Plot</a>
+    <li><a href="sorted_bar.html">Sorted Bar</a>
+    <li><a href="cereals_bar.html">Bar Chart</a>
+    <li><a href="cereals.html">Line Chart</a>
+</ul>
+
+</br>
+<H2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Cereal Nutrition Comparison Tool</H2>
+
+<div id="plot"></div>
+
+<script src="script/scatterplot.js"></script>
+
+<div>
+    Y-Axis:
+    <select onchange="changeYAxis();" id="yAxisMenu">
+        <option value="Sugars" >Sugars</option>
+        <option value="Calories" selected>Calories</option>
+        <option value="Potassium">Potassium</option>
+        <option value="Sodium">Sodium</option>
+        <option value="Protein">Protein</option>
+        <option value="Carbohydrates">Carbohydrates</option>
+    </select>
+
+    X-Axis:
+    <select onchange="changeXAxis(this.value);">
+        <option value="Sugars">Sugars</option>
+        <option value="Calories">Calories</option>
+        <option value="Potassium">Potassium</option>
+        <option value="Sodium">Sodium</option>
+        <option value="Protein">Protein</option>
+        <option value="Carbohydrates" selected>Carbohydrates</option>
+    </select>
+</div>
+
+<script>
+    function changeXAxis(elem) {
+        xLabel = elem;
+        xScale.domain(d3.extent(cerealData, xValue)).nice(); //d3.extent returns min and max values
+        svg.selectAll(".x.axis")
+            .call(xAxis);
+        svg.select("#x_label").text(xLabel);
+        changePos();
+    }
+
+    function changeYAxis() {
+        yLabel = document.getElementById("yAxisMenu").value;
+        // d3.select("#ylabel").text(x);
+        yScale.domain(d3.extent(cerealData, yValue)).nice(); //d3.extent returns min and max values
+        svg.selectAll(".y.axis")
+            .call(yAxis);
+        svg.select("#y_label").text(yLabel);
+        changePos();
+    }
+
+    function changePos() {
+        svg.selectAll("circle")
+            .transition()
+            .duration(500)
+            .attr("cx", xMap)
+            .attr("cy", yMap);
+    }
+
+</script>
+
+</body>
+</html>
