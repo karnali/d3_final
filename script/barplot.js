@@ -53,7 +53,7 @@ var makeVis = function (cerealMap) {
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 	// Make x-axis and add to canvas
-	var xAxis = d3.svg.axis().scale(xScale).orient("bottom").attr("class", "label");
+	var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 
 	canvas
 		.append("g")
@@ -62,7 +62,7 @@ var makeVis = function (cerealMap) {
 		.call(xAxis);
 
 	// Make y-axis and add to canvas
-	var yAxis = d3.svg.axis().scale(yScale).orient("left").attr("class", "label");
+	var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
 	var yAxisHandleForUpdate = canvas
 		.append("g")
